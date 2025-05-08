@@ -34,7 +34,7 @@ class WeatherClient:
         response = requests.get(url, params=params)
         if response.status_code == 200:
             data = response.json()
-            self.redis.setex(cache_key, self.cache_expire_time, json.dumps(data))  # тут json
+            self.redis.setex(cache_key, self.cache_expire_time, json.dumps(data)) 
             return data
         else:
             raise Exception(f"Помилка запиту: {response.status_code} — {response.text}")
